@@ -1,0 +1,304 @@
+（3-12为选择题，可多选）
+(X) 3. WHich of the following decimal num has exact representation in base 2? (答案：E)
+A. 0.1
+B. 0.2
+C. 0.3
+D. 0.4
+E. 0.5
+答案：E
+整数都能用二进制表示，如果是小数或者有小数部分，用乘2取整的方法转换，看能否转换成确定的二进制表达。
+
+例子：
+0.325转成二进制：
+0.325 x 2 = 0.65 (取0)
+(0.65 - 0) x 2 = 1.3 (取1)
+(1.3 - 1) x 2 = 0.6 （取0)
+(0.6 - 0) x 2 = 1.2 (取1)
+(1.2 - 1) x 2 = 0.4（取0)
+(0.4 - 0) x 2 = 0.8（取0)
+(0.8 - 0) x 2 = 1.6 （取1) 
+(1.6 - 1) x 2 = 1.2 （取1)
+………
+这个小数最终等于0.010 10011…… (10011循环）
+
+(X) 4. 1-1000猜数， 只能用yes/no回答，用optimal strategy，问在worst case情况下需要猜几次？(答案：E)
+A. 1,000
+B. 999
+C. 500
+D. 32
+E. 10
+如果每次都能知道所猜的数是too high or too low, 用类似binary search的方法需要最坏情况需要10次能猜中。
+
+What strategies did you use? Which were the best ones?
+Point out that it takes just 7 guesses to find a number between 1 and 100 if you halve the
+range each time. For example:
+Is it less than 50? Yes.
+Is it less than 25? No.
+Is it less than 37? No.
+Is it less than 43? Yes.
+Is it less than 40? No.
+Is it less than 41? No.
+It must be 42! Yes!
+Interestingly if the range is increased to 1000 it doesn’t take 10 times the effort—just three more questions are needed (10 guesses). Every time the range doubles you just need one more
+question to find the answer. 
+
+(X) 5. 一个单向链表，给出头结点和尾节点， the time of which the following operations depends on the length of the list?. vi(答案：A)
+A. Delete the last element of the list
+B. Delete the first element of the list
+C. Add an element after the last element of the list
+D. Add an element before the first element of the list
+E. Interchange the first two elements of the list
+
+答案：A
+分析：为了删除最后一个节点，我们必须先找到倒数第二个节点，但是通过指向尾节点的指针无法找到倒数第二个节点，必须遍历整个list，所以是O(n)
+sit 1point3acres.com for more.
+(X) 6. 给出一个用array[1...N]维护的stack， index是 i，并且给出push 和pop的伪代码， 问which of the following correctly iinitialize i for the implementation of the stack?(答案：B，i=1)
+Push: begin V[i] =x; i+i+1
+Pop: begin i=i+1; x=V[i]
+A: i=0
+B: i=1
+c: i=N-1
+D: i=N
+E: i=N/2
+因为array是从1到N的，所初始化i为空数组的第一个index, i=1
+
+(X) 7. 给出word， pairlet， pairdig，letter， digit的产生规则（自动机）， 问which of the lexical entities can be derived form <word>?. (答案：D)枃a鍘熷垱
+A particular BNF definition for a “word” is given by the following rules.
+<word> ::= <letter> | <letter><pairlet> | <letter><pairdig>
+<pairlet> ::= <letter><letter> | <pairlet><letter><letter>
+<pairdig> ::= <digit><digit> | <pairdig><digit><digit>
+<letter> ::= a | b | c | ... | y | | z
+<digit> ::= 0 | 1 | 2 | ... | 9
+
+Which of the following lexical entries can be derived from < word >?
+I. word
+II. words
+III. c22
+
+A. None
+B. I and II only
+C. I and III only
+D. II and III only
+E. I, II, and III
+3acres璁哄潧
+(X) 8. 给出一段关于p,k的代码(含有loop)，问p和k的关系 (答案: D)
+p := 1; k := 0;
+while k < n do
+begin
+p := 2 * p;
+k := k + 1;
+end;
+For the program fragment above involving integers p, k, and n, which of the following
+is a loop invariant; i.e., true at the beginning of each execution of the loop and
+at the completion of the loop?
+A. p = k + 1
+B. p = (k + 1)^2
+C. p = (k + 1)2^k
+D. p = 2^k
+E. p = 2^(k+1)
+
+(X) 9. 给出一段Func（int）的代码(递归函数)，问Func（2）的值，带入即可 （答案：C， 8）
+int Fun (int n)
+{
+	if(n==4) return 2;
+	else
+		return 2 * Fun(n+1);
+}
+代入计算得8.
+
+(X) 10. 给出一个网格，每个网格是一个pixel，值可以为0-7，相邻两个pixel的差值不能大于2，问有多少种情况 (答案：C，34种情况)
+Each of the pixels can take on one of the eight gray levels ranging from 0 (white) to 7
+(black). In order to prevent sharp discontinuities of shade, the software system that
+causes pictures to be displayed enforces the rule that the gray levels of two adjacent
+pixels can not differ by more than two. How many of the 64 possible assignments of
+gray levels to two adjacent pixels satisfy this rule?
+A. 24
+B. 32
+C. 34
+D. 40
+E. 64
+
+Consider two adjacent pixels and let the gray levels of these pixels be x and y. We
+need to find the cardinality of the set of all (x, y) such that x, y ∈ {0, 1, 2, ...7} and
+|x - y| ≤ 2. We see that
+· If y ∈ {2, 3, 4, 5} then x can take five different values ranging from y-2 to y+2.
+· If y ∈ {0, 7} then x can take three different values ranging from y to |y - 2|.
+· If y ∈ {1, 6} then x can take four different values. (why?)
+Hence there are 4 * 5 + 2 * 3 + 2 * 4 = 34 possibilities all in all. Thus the answer
+is choice C.
+
+(X) 11.多线程，Task0：x= 1; a = y , Task1: y = 1; b =x, 问a和b的值 (答案：D)
+答案：a=1, b=0 或者 a=0, b=1
+I and II only
+
+(X) 12. 给出一段C code， 问which best describes the growth of Foo.f(x) as a function of x?. (答案：E)
+Consider the following C code.
+int f(int x)
+{
+if (x < 1) return 1;
+else return f(x-1) + g(x);
+}
+int g(int x)
+{
+if (x < 2) return 2;
+else return f(x-1) + g(x/2);
+}
+Of the following, which best describes the growth of f(x) as a function of x?
+A. Logarithmic (O(logX))
+B. Linear (O(X))
+C. Quadratic (O(x^2))
+D. Cubic (x^2)
+E. Exponential (O(2^x))
+
+（3-12为选择题，可多选）
+(X) 3. WHich of the following decimal num has exact representation in base 2? (答案：E)
+A. 0.1
+B. 0.2
+C. 0.3
+D. 0.4
+E. 0.5
+答案：E
+整数都能用二进制表示，如果是小数或者有小数部分，用乘2取整的方法转换，看能否转换成确定的二进制表达。
+
+例子：
+0.325转成二进制：
+0.325 x 2 = 0.65 (取0)
+(0.65 - 0) x 2 = 1.3 (取1)
+(1.3 - 1) x 2 = 0.6 （取0)
+(0.6 - 0) x 2 = 1.2 (取1)
+(1.2 - 1) x 2 = 0.4（取0)
+(0.4 - 0) x 2 = 0.8（取0)
+(0.8 - 0) x 2 = 1.6 （取1) 
+(1.6 - 1) x 2 = 1.2 （取1)
+………
+这个小数最终等于0.010 10011…… (10011循环）
+
+(X) 4. 1-1000猜数， 只能用yes/no回答，用optimal strategy，问在worst case情况下需要猜几次？(答案：E)
+A. 1,000
+B. 999
+C. 500
+D. 32
+E. 10
+如果每次都能知道所猜的数是too high or too low, 用类似binary search的方法需要最坏情况需要10次能猜中。
+
+What strategies did you use? Which were the best ones?
+Point out that it takes just 7 guesses to find a number between 1 and 100 if you halve the
+range each time. For example:
+Is it less than 50? Yes.
+Is it less than 25? No.
+Is it less than 37? No.
+Is it less than 43? Yes.
+Is it less than 40? No.
+Is it less than 41? No.
+It must be 42! Yes!
+Interestingly if the range is increased to 1000 it doesn’t take 10 times the effort—just three more questions are needed (10 guesses). Every time the range doubles you just need one more
+question to find the answer. 
+
+(X) 5. 一个单向链表，给出头结点和尾节点， the time of which the following operations depends on the length of the list?. vi(答案：A)
+A. Delete the last element of the list
+B. Delete the first element of the list
+C. Add an element after the last element of the list
+D. Add an element before the first element of the list
+E. Interchange the first two elements of the list
+
+答案：A
+分析：为了删除最后一个节点，我们必须先找到倒数第二个节点，但是通过指向尾节点的指针无法找到倒数第二个节点，必须遍历整个list，所以是O(n)
+sit 1point3acres.com for more.
+(X) 6. 给出一个用array[1...N]维护的stack， index是 i，并且给出push 和pop的伪代码， 问which of the following correctly iinitialize i for the implementation of the stack?(答案：B，i=1)
+Push: begin V[i] =x; i+i+1
+Pop: begin i=i+1; x=V[i]
+A: i=0
+B: i=1
+c: i=N-1
+D: i=N
+E: i=N/2
+因为array是从1到N的，所初始化i为空数组的第一个index, i=1
+
+(X) 7. 给出word， pairlet， pairdig，letter， digit的产生规则（自动机）， 问which of the lexical entities can be derived form <word>?. (答案：D)枃a鍘熷垱
+A particular BNF definition for a “word” is given by the following rules.
+<word> ::= <letter> | <letter><pairlet> | <letter><pairdig>
+<pairlet> ::= <letter><letter> | <pairlet><letter><letter>
+<pairdig> ::= <digit><digit> | <pairdig><digit><digit>
+<letter> ::= a | b | c | ... | y | | z
+<digit> ::= 0 | 1 | 2 | ... | 9
+
+Which of the following lexical entries can be derived from < word >?
+I. word
+II. words
+III. c22
+
+A. None
+B. I and II only
+C. I and III only
+D. II and III only
+E. I, II, and III
+3acres璁哄潧
+(X) 8. 给出一段关于p,k的代码(含有loop)，问p和k的关系 (答案: D)
+p := 1; k := 0;
+while k < n do
+begin
+p := 2 * p;
+k := k + 1;
+end;
+For the program fragment above involving integers p, k, and n, which of the following
+is a loop invariant; i.e., true at the beginning of each execution of the loop and
+at the completion of the loop?
+A. p = k + 1
+B. p = (k + 1)^2
+C. p = (k + 1)2^k
+D. p = 2^k
+E. p = 2^(k+1)
+
+(X) 9. 给出一段Func（int）的代码(递归函数)，问Func（2）的值，带入即可 （答案：C， 8）
+int Fun (int n)
+{
+	if(n==4) return 2;
+	else
+		return 2 * Fun(n+1);
+}
+代入计算得8.
+
+(X) 10. 给出一个网格，每个网格是一个pixel，值可以为0-7，相邻两个pixel的差值不能大于2，问有多少种情况 (答案：C，34种情况)
+Each of the pixels can take on one of the eight gray levels ranging from 0 (white) to 7
+(black). In order to prevent sharp discontinuities of shade, the software system that
+causes pictures to be displayed enforces the rule that the gray levels of two adjacent
+pixels can not differ by more than two. How many of the 64 possible assignments of
+gray levels to two adjacent pixels satisfy this rule?
+A. 24
+B. 32
+C. 34
+D. 40
+E. 64
+
+Consider two adjacent pixels and let the gray levels of these pixels be x and y. We
+need to find the cardinality of the set of all (x, y) such that x, y ∈ {0, 1, 2, ...7} and
+|x - y| ≤ 2. We see that
+· If y ∈ {2, 3, 4, 5} then x can take five different values ranging from y-2 to y+2.
+· If y ∈ {0, 7} then x can take three different values ranging from y to |y - 2|.
+· If y ∈ {1, 6} then x can take four different values. (why?)
+Hence there are 4 * 5 + 2 * 3 + 2 * 4 = 34 possibilities all in all. Thus the answer
+is choice C.
+
+(X) 11.多线程，Task0：x= 1; a = y , Task1: y = 1; b =x, 问a和b的值 (答案：D)
+答案：a=1, b=0 或者 a=0, b=1
+I and II only
+
+(X) 12. 给出一段C code， 问which best describes the growth of Foo.f(x) as a function of x?. (答案：E)
+Consider the following C code.
+int f(int x)
+{
+if (x < 1) return 1;
+else return f(x-1) + g(x);
+}
+int g(int x)
+{
+if (x < 2) return 2;
+else return f(x-1) + g(x/2);
+}
+Of the following, which best describes the growth of f(x) as a function of x?
+A. Logarithmic (O(logX))
+B. Linear (O(X))
+C. Quadratic (O(x^2))
+D. Cubic (x^2)
+E. Exponential (O(2^x))
+
