@@ -23,11 +23,42 @@ To get rid of the leading, trailing and concecutive duplicate spaces,
 we need to preprocess the string to remove all leading, trailing and concecutive 
 duplicate spaces
 
-Leetcode better solution:
+ * Leetcode better solution:
+ * In java, String.substring() method can take two arguments.
+ * For example, String.substring(a,b) will get the substring starting
+ * at index a and ending at index (b-1).
+ * 
+ * So we can iterate the given string in one pass and keep track of the 
+ * starting and ending (a and b) position of a word, then append each word
+ * to StringBuilder.
+ * 
+ * In detail:
+ * we use int j to keep track of ending position of a word. In the loop, if 
+ * current char is ' ', we let j=i. So that j would ignore all leading, trailing
+ * or concecutive duplicate space and move with i. Until current char is not space,
+ * j will stay at the last space found, then we check if s.charAt(i-1) is ' ' or i==0.
+ * If it is, we found a word, then append the word to StringBuilder.
+ * 
 */
 
 
 public class Solution {
+    //Leetcode official solution which is much simpler and better than mine!!
+    public String reverseWords(String s) {
+        StringBuilder reversed = new StringBuilder();
+        int j=s.length();
+        for(int i=s.length()-1;i>=0;i--){
+            if(s.charAt(i)==' ')
+                j=i;
+            else if(i==0 || s.charAt(i-1)==' '){
+                if(reversed.length()!=0)
+                    reversed.append(' ');
+                reversed.append(s.substring(i,j));
+            }
+        }
+        return reversed.toString();
+    }
+    
     private boolean IsAllSpace(String s){  //check if s only contains spaces
         for(int i=0;i<s.length();i++){
             if(s.charAt(i)!=' ')
