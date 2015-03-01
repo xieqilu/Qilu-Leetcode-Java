@@ -6,7 +6,7 @@
  *     UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
  * };
  * 
- * Solution:
+ * Solution 1: BFS
  * use a queue to do BFS on the graph
  * use a HashMap<Node, Node> to store each Node and its copy
  * Also use the HashMap to check if a Node is already been visited
@@ -25,7 +25,22 @@
  * node. Then add the neighbor itself to the queue.
  * 
  * After the loop, return the copy of the head node.
+ * 
+ * 
+ * Solution 2: DFS
+ * Use a Recursive DFS approach
+ * A HashMap will be used through the entire recursive stack
+ * The key of map is the original node and value is the copied node
+ * In the recursive call, if the input node is already in the map,
+ * we directly return the copy of the input node from the map.
+ * If it is not in the map yet. we creat a copy and put the node
+ * and its copy to the map. 
+ * Then for each of its neighbors, we use the recursive call to get
+ * the copy and put the copy into the curent copyNode's list.
+ * 
  */
+
+//BFS Iterative Solution
 public class Solution {
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         //handle edge case
@@ -53,5 +68,27 @@ public class Solution {
         }
         return newNode;
         
+    }
+}
+
+
+//DFS Recursive Solution
+public class Solution {
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        if(node ==null) return null;
+        Map<UndirectedGraphNode,UndirectedGraphNode> map = new HashMap<UndirectedGraphNode,UndirectedGraphNode>();
+        return DFS(node,map);
+    }
+    
+    private UndirectedGraphNode DFS(UndirectedGraphNode node, Map<UndirectedGraphNode,UndirectedGraphNode> map){
+        if(map.containsKey(node))
+            return map.get(node);
+        UndirectedGraphNode copyNode = new UndirectedGraphNode(node.label);
+        map.put(node,copyNode);
+        for(UndirectedGraphNode neighbor : node.neighbors){
+            UndirectedGraphNode copyNeighbor = DFS(neighbor,map);
+            copyNode.neighbors.add(copyNeighbor);
+        }
+        return copyNode;
     }
 }
