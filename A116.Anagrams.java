@@ -113,8 +113,8 @@ public class Solution {
             char[] sortedChar = s.toCharArray();
             Arrays.sort(sortedChar); // Arrays.sort() is a static void method
             //Do not use char[].toString(), will cause false result
-            //Can use String sortedStr = new String(sortedChar) or below line of code
-            String sortedStr = Arrays.toString(sortedChar);
+            //Can use String sortedStr = Arrays.toString(sortedChar) or below line of code
+            String sortedStr = new String(sortedChar);
             if(map.containsKey(sortedStr))
                 map.get(sortedStr).add(s);
             else{
