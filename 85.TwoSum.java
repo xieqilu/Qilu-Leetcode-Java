@@ -22,8 +22,12 @@ public class Solution {
                 result[1] = i+1;
                 break;
             }
-            else
+            else  //update index of numbers[i] to i, if there is duplicate, update to last index
                 map.put(numbers[i], i);
+            //if we are required to find first index of numbers[i] when there are duplicate, use below code
+            //don't use above code
+            //else if(!map.containsKey(numbers[i]))
+                //map.put(numbers[i],i);
         }
         return result;
     }
