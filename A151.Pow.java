@@ -104,7 +104,7 @@ class Solution {
 
 //Iterative Solution, Time: O(logn)
 class Solution {
-    public double Pow(double x, int n) {
+    public double pow(double x, int n) {
         if(x==0) return 0;
         if(n==0) return 1;
         double res = 1;
