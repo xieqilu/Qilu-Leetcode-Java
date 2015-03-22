@@ -95,7 +95,8 @@ public class Solution {
         return buildTreeHelper(preorder, inorder, 0, preorder.length-1, 0, inorder.length-1,map);
     }
     
-    private TreeNode buildTreeHelper(int[] preorder, int[] inorder, int preL, int preR, int inL, int inR, HashMap<Integer                                               ,Integer> map)
+    private TreeNode buildTreeHelper(int[] preorder, int[] inorder, int preL, int preR, int inL, int inR, 
+                                       HashMap<Integer,Integer> map)
     {
         if(preL>preR) return null; //base case
         TreeNode root = new TreeNode(preorder[preL]); //create new TreeNode with current root element
