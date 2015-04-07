@@ -31,36 +31,35 @@ The only difference is in each pass of the loop, we need to firstly add right ch
 Then we will scan each level from right to left so that the leftmost node would be the last node of each level.
 */
 
-
 /**
  * Definition for binary tree
  * public class TreeNode {
- *     public int val;
- *     public TreeNode left;
- *     public TreeNode right;
- *     public TreeNode(int x) { val = x; }
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
  * }
  */
 public class Solution {
-    public IList<int> RightSideView(TreeNode root) {
-        IList<int> result = new List<int>();
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> result = new ArrayList<Integer>();
         if(root==null) return result;
-        Queue<TreeNode> queue = new Queue<TreeNode>();
-        queue.Enqueue(root);
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(root);
         int current=1, next=0;
-        while(queue.Count!=0){
-            TreeNode curr = queue.Dequeue();
+        while(queue.size()!=0){
+            TreeNode curr = queue.remove();
             current--;
             if(curr.left!=null){
-                queue.Enqueue(curr.left);
+                queue.add(curr.left);
                 next++;
             }
             if(curr.right!=null){
-                queue.Enqueue(curr.right);
+                queue.add(curr.right);
                 next++;
             }
             if(current==0){
-                result.Add(curr.val);
+                result.add(curr.val);
                 current=next;
                 next=0;
             }
