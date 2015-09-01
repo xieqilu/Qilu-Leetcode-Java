@@ -12,6 +12,8 @@ class Ideone
 		private String model;
 		private String vin;
 		private String brand;
+		// private int id;
+		// private int stockId;
 		
 		public Car(String year, String model, String vin, String brand){
 			this.year = year;
@@ -49,6 +51,17 @@ class Ideone
 			Car c = (Car) o;
 			return (this.getBrand().equals(c.getBrand()) && this.getModel().equals(c.getModel()));
 		}
+		
+		//Generate unique hashCode for multiple integers
+		// @Override
+		// public int hashCode(){
+		// 	final int prime = 17;
+		// 	int result = 1;
+		// 	result = result * prime + this.getId();
+		// 	result = result * prime + this.getStockId();
+		// 	return result;
+		// }
+		
 		
 		//return an unique hashcode for a car object, based on the Brand and Model
 		@Override
