@@ -46,6 +46,7 @@ class Ideone
 				return false;
 			if(o == this)
 				return true;
+			//getClass() return the class type, so we can compare if class is the same
 			if(this.getClass() != o.getClass())
 				return false;
 			Car c = (Car) o;
