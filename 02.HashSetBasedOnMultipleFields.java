@@ -37,6 +37,7 @@ class Ideone
 			this.brand = brand;
 		}
 		
+		//determine if two car objects are equal
 		@Override
 		public boolean equals(Object o){
 			if(o == null)
@@ -49,6 +50,7 @@ class Ideone
 			return (this.getBrand().equals(c.getBrand()) && this.getModel().equals(c.getModel()));
 		}
 		
+		//return an unique hashcode for a car object, based on the Brand and Model
 		@Override
 		public int hashCode(){
 			final int prime = 31;
