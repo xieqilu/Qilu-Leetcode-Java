@@ -7,6 +7,7 @@ import java.io.*;
 /* Name of the class has to be "Main" only if the class is public. */
 class Ideone
 {
+	//the testing car class
 	private static class Car{
 		private String year;
 		private String model;
@@ -37,6 +38,7 @@ class Ideone
 			this.brand = brand;
 		}
 		
+		//determine if two car object are equal
 		@Override
 		public boolean equals(Object o){
 			if(o == null)
@@ -49,6 +51,7 @@ class Ideone
 			return (this.getBrand().equals(c.getBrand()));
 		}
 		
+		//return an unique hashcode for a car object
 		@Override
 		public int hashCode(){
 			return this.getBrand().hashCode();
