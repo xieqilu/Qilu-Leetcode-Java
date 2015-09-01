@@ -13,6 +13,7 @@ class Ideone
 		private String model;
 		private String vin;
 		private String brand;
+		//private int id;
 		
 		public Car(String year, String model, String vin, String brand){
 			this.year = year;
@@ -50,6 +51,16 @@ class Ideone
 			Car c = (Car) o;
 			return (this.getBrand().equals(c.getBrand()));
 		}
+		
+		//If the field is integer, we can generate unique hashcode like follows:
+		// @Override
+		// public int hashCode()
+		// {
+  //  			final int PRIME = 31;
+  //  			int result = 1;
+  //  			result = PRIME * result + getId();
+  //  			return result;
+		// }
 		
 		//return an unique hashcode for a car object
 		@Override
